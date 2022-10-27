@@ -14,7 +14,25 @@
 
 </head>
 <body>
-    
+    <div id="app">
+        <div class="container">
+            <div class="top">
+                <h1>BusyMan</h1>
+                <label for="input"></label>
+                <input v-model="newItem.todo" type="text" id="input" placeholder="cosa vuoi fare?">
+                <label  for="priority"></label>
+                <button @click="pushItem">+</button>
+            </div>
+            <div class="bottom">
+                <ul >
+                    <li v-for="(todoes, index) in items"@click="toggleDone(index)" :class="items[index].done === true ? 'line-through' : ''"  class=" flex"><h2>{{items[index].todo}} {{items[index].timeline}}</h2><span @click= "deleteItem(index)" class="delete">&cross;</span></li>
+                </ul>
+            </div>
+        
+        </div>
+
+
+    </div>
     <script src="js/script.js"></script>
 </body>
 </html>
