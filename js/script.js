@@ -5,21 +5,27 @@ createApp ({
             index: 0,
             items: [],
             newItem: {
-                    todo: null,
+                    todo: "",
                     done: false,
             },
         }
     },
     methods: {
         pushItem: function() {
-            this.items.push({...this.newItem});
-            todo = "";
+            if (this.newItem.todo != "") {
+                this.items.push({...this.newItem});
+                this.newItem.todo = "";
+            }
         },
         deleteItem(i) {
-            this.items[i].todo = null;
+            this.items.splice(i, 1);
         },
         toggleDone(j) {
-            this.items[j].done = true 
+            if (this.items[j].done == false) {
+                this.items[j].done = true 
+            } else {
+                this.items[j].done = false  
+            }
 
             } 
         }
